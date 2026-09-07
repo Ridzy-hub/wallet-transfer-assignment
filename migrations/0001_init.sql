@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE INDEX IF NOT EXISTS idx_transfers_idempotency_key ON transfers (idempotency_key);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_transfers_idempotency_key ON transfers (idempotency_key);
 CREATE INDEX IF NOT EXISTS idx_transfers_from_wallet ON transfers (from_wallet_id);
 CREATE INDEX IF NOT EXISTS idx_transfers_to_wallet ON transfers (to_wallet_id);
 
